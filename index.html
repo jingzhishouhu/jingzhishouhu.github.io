@@ -62,6 +62,39 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-MySQL，Redis,mongodb连接pycharm" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MySQL，Redis,mongodb连接pycharm/" class="article-date">
+  <time datetime="2018-11-09T11:55:23.295Z" itemprop="datePublished">2018-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title:pycharm连接MySQL，Redis，MongoDB</p>
+<h3 id="MySQL连接"><a href="#MySQL连接" class="headerlink" title="MySQL连接"></a>MySQL连接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line"># 连接数据库</span><br><span class="line">db = pymysql.connect(host=&apos;localhost&apos;, user=&apos;root&apos;, password=&apos;123456&apos;)</span><br><span class="line"></span><br><span class="line"># print(db)</span><br><span class="line"></span><br><span class="line"># 选择数据库</span><br><span class="line">db.select_db(&apos;test&apos;)</span><br><span class="line"></span><br><span class="line"># 设置字符集</span><br><span class="line">db.set_charset(&apos;utf8&apos;)</span><br><span class="line"></span><br><span class="line"># 创建游标对象</span><br><span class="line">cursor = db.cursor()</span><br><span class="line"></span><br><span class="line"># 准备SQL语句</span><br><span class="line">sql = &apos;select name, age from star&apos;</span><br><span class="line"></span><br><span class="line"># 执行SQL语句：对于查询语句返回结果几数量</span><br><span class="line">rowcount = cursor.execute(sql)</span><br><span class="line"></span><br><span class="line"># 结果集中的记录数</span><br><span class="line"># print(rowcount)</span><br><span class="line"># print(cursor.rowcount)</span><br><span class="line"></span><br><span class="line"># 记录当前操作在结果集中的位置</span><br><span class="line"># print(cursor.rownumber)</span><br><span class="line"></span><br><span class="line"># 获取一条数据</span><br><span class="line"># print(cursor.fetchone())</span><br><span class="line"></span><br><span class="line"># 获取多条数据</span><br><span class="line"># print(cursor.fetchmany(2))</span><br><span class="line"></span><br><span class="line"># 获取所有数据</span><br><span class="line">print(cursor.fetchall())</span><br><span class="line"></span><br><span class="line"># 关闭游标</span><br><span class="line">cursor.close()</span><br><span class="line"></span><br><span class="line"># 关闭数据库连接</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line">db = pymysql.connect(host=&apos;localhost&apos;, user=&apos;root&apos;, password=&apos;123456&apos;)</span><br><span class="line"></span><br><span class="line">db.select_db(&apos;test&apos;)</span><br><span class="line"></span><br><span class="line">db.set_charset(&apos;utf8&apos;)</span><br><span class="line"></span><br><span class="line">cursor = db.cursor()</span><br><span class="line"></span><br><span class="line"># 开启事务</span><br><span class="line">db.begin()</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    sql = &apos;insert into user(username, password, gid) values(&quot;xiaoming&quot;, &quot;123456&quot;, 2)&apos;</span><br><span class="line">    # 对于DML：返回的是受影响的行数</span><br><span class="line">    rowcount = cursor.execute(sql)</span><br><span class="line">    # raise Exception(&apos;出现异常&apos;)</span><br><span class="line">    print(rowcount)</span><br><span class="line">    # 提交事务</span><br><span class="line">    db.commit()</span><br><span class="line">    # 最后插入数据的自增id</span><br><span class="line">    print(cursor.lastrowid)</span><br><span class="line"></span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e)</span><br><span class="line">    # 回滚所有操作</span><br><span class="line">    db.rollback()</span><br><span class="line"></span><br><span class="line">cursor.close()</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+<h3 id="Redis连接"><a href="#Redis连接" class="headerlink" title="Redis连接"></a>Redis连接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import redis</span><br><span class="line"></span><br><span class="line"># 创建Redis对象</span><br><span class="line"># decode_responses：返回值是否解码</span><br><span class="line">r = redis.Redis(host=&apos;localhost&apos;, port=6379, db=1, decode_responses=True)</span><br><span class="line"></span><br><span class="line"># 终端的命在代码中都是函数</span><br><span class="line">r.set(&apos;name&apos;, &apos;xiaoming&apos;)</span><br><span class="line"></span><br><span class="line">print(r.get(&apos;name&apos;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import redis</span><br><span class="line"></span><br><span class="line"># 创建连接池：可以减少频繁的连接、断开数据库的开销</span><br><span class="line">pool = redis.ConnectionPool(db=1, decode_responses=True,password=7123)</span><br><span class="line"></span><br><span class="line"># 创建Redis对象</span><br><span class="line">r = redis.Redis(connection_pool=pool)</span><br><span class="line"></span><br><span class="line">print(r.get(&apos;name&apos;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import redis</span><br><span class="line"></span><br><span class="line">pool = redis.ConnectionPool(db=1, decode_responses=True,password=7123)</span><br><span class="line"></span><br><span class="line">r = redis.Redis(connection_pool=pool)</span><br><span class="line"></span><br><span class="line"># 创建管道</span><br><span class="line">pipe = r.pipeline()</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 记录操作</span><br><span class="line">    # pipe.set(&apos;name&apos;, &apos;dahua&apos;)</span><br><span class="line">    # pipe.set(&apos;age&apos;, 20)</span><br><span class="line">    # 执行操作(一次性将命令发生到服务器)</span><br><span class="line">    # pipe.execute()</span><br><span class="line"></span><br><span class="line">    # 连贯操作、链式操作</span><br><span class="line">    pipe.set(&apos;name&apos;, &apos;goudan&apos;).set(&apos;age&apos;, 30).execute()</span><br><span class="line">except Exception as e:</span><br><span class="line">    # 清空管道</span><br><span class="line">    pipe.reset()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(r.get(&apos;age&apos;))</span><br></pre></td></tr></table></figure>
+<h3 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line"># 创建连接</span><br><span class="line">connect = MongoClient(host=&apos;127.0.0.1&apos;, port=27017)</span><br><span class="line"></span><br><span class="line"># 选择数据库</span><br><span class="line"># db = connect.test</span><br><span class="line">db = connect[&apos;test&apos;]</span><br><span class="line"></span><br><span class="line"># 打印当前库的名字</span><br><span class="line"># print(db.name)</span><br><span class="line"></span><br><span class="line"># 查看当前看中的所有集合名称</span><br><span class="line">ret = db.collection_names()</span><br><span class="line">print(ret)</span><br><span class="line"></span><br><span class="line"># 关闭连接</span><br><span class="line">connect.close()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/MySQL，Redis,mongodb连接pycharm/" data-id="cjo9ytrkc000508jbo0gfg3vm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-三个数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/三个数据库/" class="article-date">
@@ -144,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/三个数据库/" data-id="cjo9ez11d0002v8jbiqorkc2b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/三个数据库/" data-id="cjo9ytrjy000408jbsdqqorc0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/03/" data-id="cjo9ez11b0001v8jb41j4qhy3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/03/" data-id="cjo9ytrhy000208jbcrxba89n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -574,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/02/" data-id="cjo9ez12v0003v8jboz62rodb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/02/" data-id="cjo9ytri0000308jb5sy41cdo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -601,99 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/01/" data-id="cjo9ez0yb0000v8jbpqoiuqng" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-laji" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/laji/" class="article-date">
-  <time datetime="2018-10-31T02:28:49.399Z" itemprop="datePublished">2018-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&lt;!DOCTYPE html&gt;</p>
-<p><html></html></p>
-<p><head><meta name="generator" content="Hexo 3.8.0"></head></p>
-<p><title>MarkdownPad Document</title></p>
-<p><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></p>
-<p><style type="text/css"><br>/<em> GitHub stylesheet for MarkdownPad (<a href="http://markdownpad.com">http://markdownpad.com</a>) </em>/<br>/<em> Author: Nicolas Hery - <a href="http://nicolashery.com">http://nicolashery.com</a> </em>/<br>/<em> Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff </em>/<br>/<em> Source: <a href="https://github.com/nicolahery/markdownpad-github">https://github.com/nicolahery/markdownpad-github</a> </em>/</p>
-<p>/<em> RESET<br>=============================================================================</em>/</p>
-<p>html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {<br>  margin: 0;<br>  padding: 0;<br>  border: 0;<br>}</p>
-<p>/<em> BODY<br>=============================================================================</em>/</p>
-<p>body {<br>  font-family: Helvetica, arial, freesans, clean, sans-serif;<br>  font-size: 14px;<br>  line-height: 1.6;<br>  color: #333;<br>  background-color: #fff;<br>  padding: 20px;<br>  max-width: 960px;<br>  margin: 0 auto;<br>}</p>
-<p>body&gt;*:first-child {<br>  margin-top: 0 !important;<br>}</p>
-<p>body&gt;*:last-child {<br>  margin-bottom: 0 !important;<br>}</p>
-<p>/<em> BLOCKS<br>=============================================================================</em>/</p>
-<p>p, blockquote, ul, ol, dl, table, pre {<br>  margin: 15px 0;<br>}</p>
-<p>/<em> HEADERS<br>=============================================================================</em>/</p>
-<p>h1, h2, h3, h4, h5, h6 {<br>  margin: 20px 0 10px;<br>  padding: 0;<br>  font-weight: bold;<br>  -webkit-font-smoothing: antialiased;<br>}</p>
-<p>h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {<br>  font-size: inherit;<br>}</p>
-<p>h1 {<br>  font-size: 28px;<br>  color: #000;<br>}</p>
-<p>h2 {<br>  font-size: 24px;<br>  border-bottom: 1px solid #ccc;<br>  color: #000;<br>}</p>
-<p>h3 {<br>  font-size: 18px;<br>}</p>
-<p>h4 {<br>  font-size: 16px;<br>}</p>
-<p>h5 {<br>  font-size: 14px;<br>}</p>
-<p>h6 {<br>  color: #777;<br>  font-size: 14px;<br>}</p>
-<p>body&gt;h2:first-child, body&gt;h1:first-child, body&gt;h1:first-child+h2, body&gt;h3:first-child, body&gt;h4:first-child, body&gt;h5:first-child, body&gt;h6:first-child {<br>  margin-top: 0;<br>  padding-top: 0;<br>}</p>
-<p>a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {<br>  margin-top: 0;<br>  padding-top: 0;<br>}</p>
-<p>h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {<br>  margin-top: 10px;<br>}</p>
-<p>/<em> LINKS<br>=============================================================================</em>/</p>
-<p>a {<br>  color: #4183C4;<br>  text-decoration: none;<br>}</p>
-<p>a:hover {<br>  text-decoration: underline;<br>}</p>
-<p>/<em> LISTS<br>=============================================================================</em>/</p>
-<p>ul, ol {<br>  padding-left: 30px;<br>}</p>
-<p>ul li &gt; :first-child,<br>ol li &gt; :first-child,<br>ul li ul:first-of-type,<br>ol li ol:first-of-type,<br>ul li ol:first-of-type,<br>ol li ul:first-of-type {<br>  margin-top: 0px;<br>}</p>
-<p>ul ul, ul ol, ol ol, ol ul {<br>  margin-bottom: 0;<br>}</p>
-<p>dl {<br>  padding: 0;<br>}</p>
-<p>dl dt {<br>  font-size: 14px;<br>  font-weight: bold;<br>  font-style: italic;<br>  padding: 0;<br>  margin: 15px 0 5px;<br>}</p>
-<p>dl dt:first-child {<br>  padding: 0;<br>}</p>
-<p>dl dt&gt;:first-child {<br>  margin-top: 0px;<br>}</p>
-<p>dl dt&gt;:last-child {<br>  margin-bottom: 0px;<br>}</p>
-<p>dl dd {<br>  margin: 0 0 15px;<br>  padding: 0 15px;<br>}</p>
-<p>dl dd&gt;:first-child {<br>  margin-top: 0px;<br>}</p>
-<p>dl dd&gt;:last-child {<br>  margin-bottom: 0px;<br>}</p>
-<p>/<em> CODE<br>=============================================================================</em>/</p>
-<p>pre, code, tt {<br>  font-size: 12px;<br>  font-family: Consolas, “Liberation Mono”, Courier, monospace;<br>}</p>
-<p>code, tt {<br>  margin: 0 0px;<br>  padding: 0px 0px;<br>  white-space: nowrap;<br>  border: 1px solid #eaeaea;<br>  background-color: #f8f8f8;<br>  border-radius: 3px;<br>}</p>
-<p>pre&gt;code {<br>  margin: 0;<br>  padding: 0;<br>  white-space: pre;<br>  border: none;<br>  background: transparent;<br>}</p>
-<p>pre {<br>  background-color: #f8f8f8;<br>  border: 1px solid #ccc;<br>  font-size: 13px;<br>  line-height: 19px;<br>  overflow: auto;<br>  padding: 6px 10px;<br>  border-radius: 3px;<br>}</p>
-<p>pre code, pre tt {<br>  background-color: transparent;<br>  border: none;<br>}</p>
-<p>kbd {<br>    -moz-border-bottom-colors: none;<br>    -moz-border-left-colors: none;<br>    -moz-border-right-colors: none;<br>    -moz-border-top-colors: none;<br>    background-color: #DDDDDD;<br>    background-image: linear-gradient(#F1F1F1, #DDDDDD);<br>    background-repeat: repeat-x;<br>    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;<br>    border-image: none;<br>    border-radius: 2px 2px 2px 2px;<br>    border-style: solid;<br>    border-width: 1px;<br>    font-family: “Helvetica Neue”,Helvetica,Arial,sans-serif;<br>    line-height: 10px;<br>    padding: 1px 4px;<br>}</p>
-<p>/<em> QUOTES<br>=============================================================================</em>/</p>
-<p>blockquote {<br>  border-left: 4px solid #DDD;<br>  padding: 0 15px;<br>  color: #777;<br>}</p>
-<p>blockquote&gt;:first-child {<br>  margin-top: 0px;<br>}</p>
-<p>blockquote&gt;:last-child {<br>  margin-bottom: 0px;<br>}</p>
-<p>/<em> HORIZONTAL RULES<br>=============================================================================</em>/</p>
-<p>hr {<br>  clear: both;<br>  margin: 15px 0;<br>  height: 0px;<br>  overflow: hidden;<br>  border: none;<br>  background: transparent;<br>  border-bottom: 4px solid #ddd;<br>  padding: 0;<br>}</p>
-<p>/<em> TABLES<br>=============================================================================</em>/</p>
-<p>table th {<br>  font-weight: bold;<br>}</p>
-<p>table th, table td {<br>  border: 1px solid #ccc;<br>  padding: 6px 13px;<br>}</p>
-<p>table tr {<br>  border-top: 1px solid #ccc;<br>  background-color: #fff;<br>}</p>
-<p>table tr:nth-child(2n) {<br>  background-color: #f8f8f8;<br>}</p>
-<p>/<em> IMAGES<br>=============================================================================</em>/</p>
-<p>img {<br>  max-width: 100%<br>}<br></style><br></p>
-<p><body></body></p>
-<p></p><h1>啊哈哈</h1><p></p>
-<ul><br><li>圣诞节疯狂送快递发货快说句话</li><br><li>阿贾克斯的骄傲开谁的</li><br></ul>
-
-<p><br><br><!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) --></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/laji/" data-id="cjo9ez12x0004v8jbk3u58g3u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/01/" data-id="cjo9ytrej000008jbamc3tm77" class="article-share-link">Share</a>
       
       
     </footer>
@@ -739,6 +680,10 @@
       <ul>
         
           <li>
+            <a href="/MySQL，Redis,mongodb连接pycharm/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/三个数据库/">(no title)</a>
           </li>
         
@@ -752,10 +697,6 @@
         
           <li>
             <a href="/01/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/laji/">(no title)</a>
           </li>
         
       </ul>
