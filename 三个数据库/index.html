@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="MySQL Redis MongoDB     类型： 关系型 非关系型 非关系型   端口： 3306 6379 27017   进入方式： mysql -uroot -p redis-cli mongo   查看所有库： show databases; 16个库，默认在0 show dbs   查看当前库： select database(); 能看到 db/db.getName()">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/三个数据库/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MySQL Redis MongoDB     类型： 关系型 非关系型 非关系型   端口： 3306 6379 27017   进入方式： mysql -uroot -p redis-cli mongo   查看所有库： show databases; 16个库，默认在0 show dbs   查看当前库： select database(); 能看到 db/db.getName()">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-09T02:37:59.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="MySQL Redis MongoDB     类型： 关系型 非关系型 非关系型   端口： 3306 6379 27017   进入方式： mysql -uroot -p redis-cli mongo   查看所有库： show databases; 16个库，默认在0 show dbs   查看当前库： select database(); 能看到 db/db.getName()">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,99 +64,107 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/三个数据库/" class="archive-article-date">
-  <time datetime="2018-11-09T02:38:42.393Z" itemprop="datePublished">Nov 9</time>
+        <section id="main"><article id="post-三个数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/三个数据库/" class="article-date">
+  <time datetime="2018-11-09T02:38:42.393Z" itemprop="datePublished">2018-11-09</time>
 </a>
-      
-    </header>
+    
   </div>
-</article>
-  
+  <div class="article-inner">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/03/" class="archive-article-date">
-  <time datetime="2018-11-07T02:54:09.962Z" itemprop="datePublished">Nov 7</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/02/" class="archive-article-date">
-  <time datetime="2018-11-01T00:50:24.396Z" itemprop="datePublished">Nov 1</time>
-</a>
-      
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/01/" class="archive-article-date">
-  <time datetime="2018-10-31T03:05:23.480Z" itemprop="datePublished">Oct 31</time>
-</a>
-      
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/laji/" class="archive-article-date">
-  <time datetime="2018-10-31T02:28:49.399Z" itemprop="datePublished">Oct 31</time>
-</a>
-      
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/abc/" class="archive-article-date">
-  <time datetime="2018-10-30T12:50:46.393Z" itemprop="datePublished">Oct 30</time>
-</a>
-      
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+        <table>
+<thead>
+<tr>
+<th></th>
+<th>MySQL</th>
+<th>Redis</th>
+<th>MongoDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型：</td>
+<td>关系型</td>
+<td>非关系型</td>
+<td>非关系型</td>
+</tr>
+<tr>
+<td>端口：</td>
+<td>3306</td>
+<td>6379</td>
+<td>27017</td>
+</tr>
+<tr>
+<td>进入方式：</td>
+<td>mysql -uroot -p</td>
+<td>redis-cli</td>
+<td>mongo</td>
+</tr>
+<tr>
+<td>查看所有库：</td>
+<td>show databases;</td>
+<td>16个库，默认在0</td>
+<td>show dbs</td>
+</tr>
+<tr>
+<td>查看当前库：</td>
+<td>select database();</td>
+<td>能看到</td>
+<td>db/db.getName()</td>
+</tr>
+<tr>
+<td>选择库：</td>
+<td>use 库名;</td>
+<td>select 数字</td>
+<td>use 库名   存在切换，不存在创建</td>
+</tr>
+<tr>
+<td>创建库：</td>
+<td>create database 库名;</td>
+<td>不用创建</td>
+<td>use 库名</td>
+</tr>
+<tr>
+<td>删除库：</td>
+<td>drop database 库名;</td>
+<td>flushdb/all  清空</td>
+<td>db.dropDatabase()  删除当前库</td>
+</tr>
+<tr>
+<td>数据类型：</td>
+<td>数据表</td>
+<td>字符串、哈希、列表、集合、有序集合</td>
+<td>集合（collection）</td>
+</tr>
+</tbody>
+</table>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/三个数据库/" data-id="cjo9ez11d0002v8jbiqorkc2b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/03/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
